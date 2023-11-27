@@ -1,0 +1,51 @@
+.feedback-wrapper {
+  text-align: center;
+}
+.feedback-title {
+  margin-top: 100px;
+}
+.feedback-btn-list {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.feedback-btn {
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(29, 249, 5, 0.715);
+  transition: 300ms ease-in-out;
+}
+.feedback-btn:hover {
+  background-color: rgb(9, 193, 24);
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgb(149, 149, 149);
+}
+.feedback-stat-list {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.feedback-stat-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 90px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(241, 249, 5, 0.715);
+}
+.feedback-stat-name {
+  margin-top: 5px;
+  font-size: 14px;
+}
+.feedback-stat-number {
+  font-size: 44px;
+}
