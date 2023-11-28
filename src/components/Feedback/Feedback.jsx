@@ -56,7 +56,7 @@ export class Feedback extends Component {
           />
         </Section>
         {this.countTotalFeedback() === 0 ? (
-          <Notification message="There is no feedback" />
+          <Notification message="There is no feedback before" />
         ) : (
           <Section title="Statistics">
             <Statistics
