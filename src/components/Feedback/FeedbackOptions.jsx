@@ -8,7 +8,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
           <button
             className="feedback-btn"
             onClick={() => {
-              onLeaveFeedback({ option });
+              onLeaveFeedback(option);
             }}
           >
             {option}

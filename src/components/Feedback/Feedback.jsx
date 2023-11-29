@@ -5,53 +5,32 @@ import FeedbackOptions from './FeedbackOptions';
 import Notification from './Notification';
 export class Feedback extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    Good: 0,
+    Neutral: 0,
+    Bad: 0,
   };
 
   statIncrement = name => {
     this.setState(prevState => {
-      switch (name.option) {
-        case 'Good':
-          return {
-            good: prevState.good + 1,
-            neutral: prevState.neutral,
-            bad: prevState.bad,
-          };
-        case 'Neutral':
-          return {
-            good: prevState.good,
-            neutral: prevState.neutral + 1,
-            bad: prevState.bad,
-          };
-        case 'Bad':
-          return {
-            good: prevState.good,
-            neutral: prevState.neutral,
-            bad: prevState.bad + 1,
-          };
-        default:
-          break;
-      }
+      return { [name]: prevState[name] + 1 };
     });
   };
-  countTotalFeedback = () => {
-    return this.state.bad + this.state.good + this.state.neutral;
-  };
+  countTotalFeedback = () =>
+    Object.values(this.state).reduce((acc, currentValue) => acc + currentValue);
   countPositiveFeedbackPercentage = () => {
     if (this.countTotalFeedback() === 0) {
       return 0;
     } else {
-      return (this.state.good / this.countTotalFeedback()) * 100;
+      return (this.state.Good / this.countTotalFeedback()) * 100;
     }
   };
   render() {
+    const currentValues = Object.keys(this.state);
     return (
       <div className="feedback-wrapper">
         <Section title="Please, leave your feedback">
           <FeedbackOptions
-            options={['Good', 'Neutral', 'Bad']}
+            options={currentValues}
             onLeaveFeedback={this.statIncrement}
           />
         </Section>
@@ -60,9 +39,9 @@ export class Feedback extends Component {
         ) : (
           <Section title="Statistics">
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={this.state.Good}
+              neutral={this.state.Neutral}
+              bad={this.state.Bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
